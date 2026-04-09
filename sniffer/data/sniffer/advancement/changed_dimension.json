@@ -1,0 +1,10 @@
+{
+    "criteria": {
+        "0": {
+            "trigger": "minecraft:changed_dimension"
+        }
+    },
+    "rewards": {
+        "function": "sniffer:class/player/changed_dimension/main"
+    }
+}

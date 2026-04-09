@@ -1,0 +1,15 @@
+{
+  "criteria": {
+    "0": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "player": {
+          "nbt": "{\"Health\": 0.0f}"
+        }
+      }
+    }
+  },
+  "rewards": {
+    "function": "sniffer:class/player/death/main"
+  }
+}

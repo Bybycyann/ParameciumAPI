@@ -1,0 +1,10 @@
+{
+  "criteria": {
+    "0": {
+      "trigger": "minecraft:tick"
+    }
+  },
+  "rewards": {
+    "function": "sniffer:class/player/init/main"
+  }
+}
