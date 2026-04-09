@@ -1,4 +1,11 @@
-## 异常
+# ParameciumAPI
+
+> 在纯 Datapack 基础上优化 mcfunction 开发体验的一次尝试。
+
+
+## 规范
+
+### 异常
 
 PMC 约定了一套异常抛出与捕获语法
 
