@@ -14,8 +14,10 @@
 
 # Input
 data modify storage pmc:io stack append value {}
-$data modify storage pmc:io stack[-1].PARAM merge value $(args)
-# data modify storage pmc:io stack[-1].PARAM set from storage pmc:io stack[-2].CONTEXT.args
+
+# $data modify storage pmc:io stack[-1].PARAM merge value $(args)
+data modify storage pmc:io stack[-1].PARAM set from storage pmc:io stack[-2].CONTEXT.args
+
 execute store result score #__len__ pmc.var run data get storage pmc:io stack[-1].PARAM.source
 execute store result score #__a__ pmc.var run data get storage pmc:io stack[-1].PARAM.range[0]
 execute store result score #__b__ pmc.var run data get storage pmc:io stack[-1].PARAM.range[1]
@@ -36,7 +38,7 @@ execute if function #pmc:error.catch run return run data remove storage pmc:io s
 # Cache
 
 # Main
-# 更新指针
+# 丢弃片段
 function pmc:class/list/method/split/1.1
 # 截取
 function pmc:class/list/method/split/1.2

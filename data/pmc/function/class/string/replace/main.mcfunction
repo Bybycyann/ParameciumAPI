@@ -15,7 +15,8 @@
 
 # Input
 data modify storage pmc:io stack append value {}
-$data modify storage pmc:io stack[-1].PARAM merge value $(args)
+# $data modify storage pmc:io stack[-1].PARAM merge value $(args)
+data modify storage pmc:io stack[-1].PARAM merge from storage pmc:io stack[-2].CONTEXT.args
 
 # Errors
 function #pmc:error.try
@@ -32,13 +33,13 @@ execute if function #pmc:error.catch run return run data remove storage pmc:io s
 # Main
 execute unless data storage pmc:io stack[-1].PARAM.num run data modify storage pmc:io stack[-1].PARAM.num set value -1
 
-data modify storage pmc:io stack[-1].args.str set from storage pmc:io stack[-1].PARAM.str
-data modify storage pmc:io stack[-1].args.sep set from storage pmc:io stack[-1].PARAM.old
-data modify storage pmc:io stack[-1].args.mark set from storage pmc:io stack[-1].PARAM.new
-data modify storage pmc:io stack[-1].args.num set from storage pmc:io stack[-1].PARAM.num
+data modify storage pmc:io stack[-1].CONTEXT.args.str set from storage pmc:io stack[-1].PARAM.str
+data modify storage pmc:io stack[-1].CONTEXT.args.sep set from storage pmc:io stack[-1].PARAM.old
+data modify storage pmc:io stack[-1].CONTEXT.args.mark set from storage pmc:io stack[-1].PARAM.new
+data modify storage pmc:io stack[-1].CONTEXT.args.num set from storage pmc:io stack[-1].PARAM.num
 function #pmc:str.split with storage pmc:io stack[-1]
-data remove storage pmc:io stack[-1].args
-data modify storage pmc:io stack[-1].args.source set from storage pmc:io return
+data modify storage pmc:io stack[-1].CONTEXT.args set value {}
+data modify storage pmc:io stack[-1].CONTEXT.args.source set from storage pmc:io return
 function #pmc:str.strcat with storage pmc:io stack[-1]
 
 # Return

@@ -1,4 +1,4 @@
-# 更新指针
+# 丢弃片段
 
 execute if score #__a__ pmc.var matches ..0 run return 1
 scoreboard players remove #__a__ pmc.var 1

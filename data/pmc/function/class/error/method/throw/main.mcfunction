@@ -19,14 +19,14 @@ data modify storage pmc:io stack append value {}
 $data modify storage pmc:io stack[-1].PARAM set value $(args)
 
 # 构建异常对象
-data modify storage pmc:io stack[-1].args.str set from storage pmc:io stack[-1].PARAM.function
-data modify storage pmc:io stack[-1].args merge value {old: "#", new: "", num: 1}
-function #pmc:str.replace with storage pmc:io stack[-1]
+data modify storage pmc:io stack[-1].CONTEXT.args.str set from storage pmc:io stack[-1].PARAM.function
+data modify storage pmc:io stack[-1].CONTEXT.args merge value {old: "#", new: "", num: 1}
+function #pmc:str.replace
 
-data modify storage pmc:io stack[-1].args set value {}
-data modify storage pmc:io stack[-1].args.str set from storage pmc:io return
-data modify storage pmc:io stack[-1].args merge value {sep: ":", num: 1}
-function #pmc:str.split with storage pmc:io stack[-1]
+data modify storage pmc:io stack[-1].CONTEXT.args set value {}
+data modify storage pmc:io stack[-1].CONTEXT.args.str set from storage pmc:io return
+data modify storage pmc:io stack[-1].CONTEXT.args merge value {sep: ":", num: 1}
+function #pmc:str.split
 
 data modify storage pmc:io stack[-1].error.namespace set from storage pmc:io return[0]
 data modify storage pmc:io stack[-1].error merge from storage pmc:io stack[-1].PARAM
