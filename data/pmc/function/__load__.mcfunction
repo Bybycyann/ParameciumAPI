@@ -2,6 +2,7 @@
 
 # __init__
 function pmc:class/entity/__init__
+function pmc:class/list/__init__
 
 # Scoreboard
     # Variables

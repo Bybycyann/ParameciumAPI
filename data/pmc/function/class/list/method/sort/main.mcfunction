@@ -20,6 +20,7 @@ function #pmc:error.try
 execute if function #pmc:error.catch run return run data remove storage pmc:io stack[-1]
 
 # Cache
+execute if function pmc:class/list/method/sort/cache/main run return run data remove storage pmc:io stack[-1]
 
 # Main
 execute unless data storage pmc:io stack[-1].CONTEXT.args.method run data modify storage pmc:io stack[-1].PARAM.method set value "mergesort"
@@ -28,3 +29,6 @@ execute if data storage pmc:io stack[-1].PARAM{method:"mergesort"} run function 
 
 # Return
 data remove storage pmc:io stack[-1]
+
+# Cache
+execute if data storage pmc:io cache."pmc:list".sort[{value: "#Cache#"}] run data modify storage pmc:io cache."pmc:list".sort[0].value set from storage pmc:io return

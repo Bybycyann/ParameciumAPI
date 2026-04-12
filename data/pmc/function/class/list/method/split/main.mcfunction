@@ -14,8 +14,6 @@
 
 # Input
 data modify storage pmc:io stack append value {}
-
-# $data modify storage pmc:io stack[-1].PARAM merge value $(args)
 data modify storage pmc:io stack[-1].PARAM set from storage pmc:io stack[-2].CONTEXT.args
 
 execute store result score #__len__ pmc.var run data get storage pmc:io stack[-1].PARAM.source
