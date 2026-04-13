@@ -2,7 +2,9 @@
 
 # __init__
 function pmc:class/entity/__init__
-function pmc:class/list/__init__
+
+# 缓存释放
+data remove storage pmc:io cache
 
 # Scoreboard
     # Variables

@@ -31,4 +31,4 @@ execute if data storage pmc:io stack[-1].PARAM{method:"mergesort"} run function 
 data remove storage pmc:io stack[-1]
 
 # Cache
-execute if data storage pmc:io cache."pmc:list".sort[{value: "#Cache#"}] run data modify storage pmc:io cache."pmc:list".sort[0].value set from storage pmc:io return
+function pmc:class/list/method/sort/cache/write/value
