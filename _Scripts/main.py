@@ -11,6 +11,7 @@ class mcfunction:
         if self.path.split(':')[1].split('/')[0] in 'class':
             self._class = obj.get('class', f'{self.namespace}:{self.path.split(':')[1].split('/')[1]}')
 
+# 函数缓存
 def Cache(mcf: mcfunction):
     cache_path = mcf.directory/'cache'
     (cache_path/'update').mkdir(parents=True, exist_ok=True)
@@ -117,8 +118,6 @@ data modify storage pmc:io cache."{tag}".{mcf.name} prepend from storage pmc:io 
     Path(cache_path/'update'/'2.mcfunction').write_text(templates['update_2'], encoding='utf-8')
     Path(cache_path/'update'/'3.mcfunction').write_text(templates['update_3'], encoding='utf-8')
     Path(cache_path/'update'/'4.mcfunction').write_text(templates['update_4'], encoding='utf-8')
-    pass
-    
 
 def main():
     # 数据包根目录
@@ -162,6 +161,6 @@ def main():
         # 执行预处理指令
         if mcf.directive and '@Cache' in mcf.directive: Cache(mcf)
 
-        print('已处理函数：' + f'{mcf.path}')
+        print('\033[32m' + '已处理函数：' + f'{mcf.path}' + '\033[0m')
 
 main()
