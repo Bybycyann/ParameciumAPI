@@ -1,3 +1,4 @@
+# {"Config": false}
 # str.split(args: {str: str,sep: str, mark: str, num: int})
 # --------------------
 # 依据分隔符切片

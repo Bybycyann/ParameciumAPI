@@ -1,3 +1,4 @@
+# {"Config": false}
 # str.replace(args: {str: str,old: str, new: str, num: int})
 # --------------------
 # 字符串元素替换

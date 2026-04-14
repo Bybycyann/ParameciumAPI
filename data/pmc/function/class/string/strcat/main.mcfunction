@@ -1,3 +1,4 @@
+# {"Config": false}
 # str.strcat(args: {source: list, sep: list})
 # --------------------
 # 字符串拼接

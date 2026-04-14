@@ -1,3 +1,4 @@
+# {"Config": false}
 # list.mergestore(arr)
 # --------------------
 # 归并排序

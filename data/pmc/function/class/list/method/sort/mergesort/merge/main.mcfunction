@@ -1,3 +1,4 @@
+# {"Config": false}
 # merge(left, right)
 # --------------------
 # 归并排序-合并

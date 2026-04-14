@@ -1,3 +1,4 @@
+# {"Config": false}
 # list.split(args: {source: list, range: list})
 # --------------------
 # 依据分隔符切片

@@ -162,4 +162,6 @@ def main():
         # 执行预处理指令
         if mcf.directive and '@Cache' in mcf.directive: Cache(mcf)
 
+        print('已处理函数：' + f'{mcf.path}')
+
 main()

@@ -1,3 +1,4 @@
+# {"Config": false}
 # error.throw(args: {type: str, function: str, message: str/textComponent, hide: bool})
 # --------------------
 # 抛出异常
