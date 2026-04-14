@@ -1,3 +1,4 @@
+# {}
 # list.sort(arr: list, method: (mergesort|...))
 # --------------------
 # 列表排序

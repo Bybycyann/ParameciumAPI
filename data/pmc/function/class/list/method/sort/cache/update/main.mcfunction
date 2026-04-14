@@ -1,5 +1,5 @@
-# 缓存更新
-
+# {"Config": false}
+# Function Cache - (Script)
 execute if score #__index__ pmc.var matches 0 run return run function pmc:class/list/method/sort/cache/update/0
 execute if score #__index__ pmc.var matches 1 run return run function pmc:class/list/method/sort/cache/update/1
 execute if score #__index__ pmc.var matches 2 run return run function pmc:class/list/method/sort/cache/update/2
