@@ -28,6 +28,18 @@
                 "formats": [58,89],
                 "min_format": 58,
                 "max_format": 89
+            },
+            {
+                "directory": "gamerule-25w44a-aft",
+                "formats": [92,99],
+                "min_format": 92,
+                "max_format": 99
+            },
+            {
+                "directory": "gamerule-25w44a-bef",
+                "formats": [58,92],
+                "min_format": 58,
+                "max_format": 92
             }
         ]
     }

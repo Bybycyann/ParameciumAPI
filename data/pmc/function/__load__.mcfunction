@@ -2,6 +2,10 @@
 
 # __init__
 function pmc:class/entity/__init__
+function pmc:class/timer/__init__
+
+# gamerule
+function pmc:__gamerule__
 
 # 缓存释放
 data remove storage pmc:io cache

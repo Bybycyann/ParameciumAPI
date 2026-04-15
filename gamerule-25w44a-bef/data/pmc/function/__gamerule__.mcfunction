@@ -1,0 +1,2 @@
+gamerule maxCommandForkCount 655360
+gamerule maxCommandChainLength 655360

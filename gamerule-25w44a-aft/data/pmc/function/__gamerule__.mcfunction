@@ -1,0 +1,2 @@
+gamerule minecraft:max_command_forks 655360
+gamerule minecraft:max_command_sequence_length 655360

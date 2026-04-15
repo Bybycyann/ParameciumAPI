@@ -17,7 +17,7 @@
 
 |Key|Value|Description|
 |:---:|:---:|:---:|
-|Config|(true\|false)|默认为 ture，当此值为 false 时脚本将跳过处理该函数|
+|Config|bool|默认为 ture，当此值为 false 时脚本将跳过处理该函数|
 |directive|list|预处理指令标签。可写入：`["@Cache"]`|
 
 ### 函数栈
@@ -97,3 +97,25 @@ data modify storage pmc:io return set from ...
 function <namespace>:<function_path>/cache/write/value
 ```
 
+### 函数计时器
+
+PMC 使用两个简单函数用于在一个上下文环境 (函数栈帧) 内创建和销毁计时器。
+
+|函数|描述|
+|:---:|:---:|
+|`#pmc:timer.create`|在上下文内创建一个新的计时器|
+|`#pmc:timer.query`|获取最近创建的计时器的值(ms)并销毁该计时器|
+
+```mcfunction
+# 压入栈帧
+data modify storage pmc:io stack append value {}
+# 创建计时器
+function #pmc:timer.create
+# 读取并销毁计时器 (ms)
+execute store result storage pmc:io return int 1 run function #pmc:timer.query
+# 弹出栈帧
+data remove storage pmc:io stack[-1]
+```
+
+**函数平均执行时间**
+`function #pmc:fun_time {function: "测试函数", args: {测试函数的参数}}`
