@@ -1,6 +1,7 @@
 # __load__
 
 # __init__
+function pmc:class/error/__init__
 function pmc:class/entity/__init__
 function pmc:class/timer/__init__
 
