@@ -22,11 +22,11 @@ data modify storage pmc:io stack[-1].PARAM merge from storage pmc:io stack[-2].C
 # Errors
 function #pmc:error.try
     execute unless data storage pmc:io stack[-1].PARAM.str run \
-    function #pmc:error.throw {"args":{"type": "error", "function":"#pmc:str.replace", "message":'缺少必要的参数: "str".'}}
+    function #pmc:error.throw {"args":{"type": "error", "hide": false, "function":"#pmc:str.replace", "message":'缺少必要的参数: "str".'}}
     execute unless data storage pmc:io stack[-1].PARAM.new run \
-    function #pmc:error.throw {"args":{"type": "error", "function":"#pmc:str.replace", "message":'缺少必要的参数: "new".'}}
+    function #pmc:error.throw {"args":{"type": "error", "hide": false, "function":"#pmc:str.replace", "message":'缺少必要的参数: "new".'}}
     execute unless data storage pmc:io stack[-1].PARAM.old run \
-    function #pmc:error.throw {"args":{"type": "error", "function":"#pmc:str.replace", "message":'缺少必要的参数: "old".'}}
+    function #pmc:error.throw {"args":{"type": "error", "hide": false, "function":"#pmc:str.replace", "message":'缺少必要的参数: "old".'}}
 execute if function #pmc:error.catch run return run data remove storage pmc:io stack[-1]
 
 # Cache

@@ -6,7 +6,7 @@ $tellraw @s [\
         "with": [{\
             "type": "nbt",\
             "storage": "pmc:io",\
-            "nbt": "error[-1][-1].namespace"\
+            "nbt": "stack[-1].error.namespace"\
         }],\
         "color": "#FFFFFF"\
     },\
@@ -16,7 +16,7 @@ $tellraw @s [\
             {\
                 "type": "nbt",\
                 "storage": "pmc:io",\
-                "nbt": "error[-1][-1].type"\
+                "nbt": "stack[-1].error.type"\
             },\
             $(str_tmp)\
         ],\
@@ -26,7 +26,7 @@ $tellraw @s [\
             "value":[{\
                 "type": "nbt",\
                 "storage": "pmc:io",\
-                "nbt": "error[-1][-1].function",\
+                "nbt": "stack[-1].error.function",\
                 "color": "yellow"\
             }]\
         }}\

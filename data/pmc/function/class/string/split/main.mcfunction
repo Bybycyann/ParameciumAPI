@@ -26,7 +26,7 @@ data modify storage pmc:io stack[-1].PARAM merge from storage pmc:io stack[-2].C
 # Error
 function #pmc:error.try
     execute unless data storage pmc:io stack[-1].PARAM.str run \
-    function #pmc:error.throw {"args":{"type": "error", "function":"#pmc:str.split", "message":'缺少必要的参数: "str".'}}
+    function #pmc:error.throw {"args":{"type": "error", "hide": false, "function":"#pmc:str.split", "message":'缺少必要的参数: "str".'}}
 execute if function #pmc:error.catch run return run data remove storage pmc:io stack[-1]
 
 # Main

@@ -21,7 +21,7 @@ data modify storage pmc:io stack[-1].PARAM set from storage pmc:io stack[-2].CON
 # Errors
 function #pmc:error.try
     execute unless data storage pmc:io stack[-1].PARAM.source run \
-    function #pmc:error.throw {"args":{"type": "error", "function":"#pmc:str.strcat", "message":'缺少必要的参数: "source".'}}
+    function #pmc:error.throw {"args":{"type": "error", "hide": false, "function":"#pmc:str.strcat", "message":'缺少必要的参数: "source".'}}
 execute if function #pmc:error.catch run return run data remove storage pmc:io stack[-1]
 
 # Cache

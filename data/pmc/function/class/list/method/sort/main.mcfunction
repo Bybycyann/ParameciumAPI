@@ -17,7 +17,7 @@ data modify storage pmc:io stack[-1].CONTEXT.args merge from storage pmc:io stac
 # Errors
 function #pmc:error.try
     execute unless data storage pmc:io stack[-1].CONTEXT.args.arr run \
-    function #pmc:error.throw {"args":{"type": "error", "function":"#pmc:list.mergestore", "message":'缺少必要的参数: "arr".'}}
+    function #pmc:error.throw {"args":{"type": "error", "hide": false,"function":"#pmc:list.mergestore", "message":'缺少必要的参数: "arr".'}}
 execute if function #pmc:error.catch run return run data remove storage pmc:io stack[-1]
 
 # Cache

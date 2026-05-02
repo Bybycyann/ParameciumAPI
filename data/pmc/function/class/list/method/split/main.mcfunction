@@ -26,12 +26,12 @@ data modify storage pmc:io return set value []
 # Errors
 function #pmc:error.try
     execute unless data storage pmc:io stack[-1].PARAM.source run \
-    function #pmc:error.throw {"args":{"type": "error", "function":"#pmc:list.split", "message":'缺少必要的参数: "source".'}}
+    function #pmc:error.throw {"args":{"type": "error", "hide": false, "function":"#pmc:list.split", "message":'缺少必要的参数: "source".'}}
     function #pmc:error.try
         execute unless data storage pmc:io stack[-1].PARAM.range run \
-            function #pmc:error.throw {"args":{"type": "error", "function":"#pmc:list.split", "message":'缺少必要的参数: "range".'}}
+            function #pmc:error.throw {"args":{"type": "error", "hide": false, "function":"#pmc:list.split", "message":'缺少必要的参数: "range".'}}
     execute unless function #pmc:error.catch if function pmc:class/list/method/split/predicate/1 run \
-        function #pmc:error.throw {"args":{"type": "error", "function":"#pmc:list.split", "message":{"translate": '意外的 "%s" 出现在 range.', "with": [{"type": "nbt", "storage": "pmc:io", "nbt": "stack[-1].PARAM.range"}]}}}
+        function #pmc:error.throw {"args":{"type": "error", "hide": false, "function":"#pmc:list.split", "message":{"translate": '意外的 "%s" 出现在 range.', "with": [{"type": "nbt", "storage": "pmc:io", "nbt": "stack[-1].PARAM.range"}]}}}
 execute if function #pmc:error.catch run return run data remove storage pmc:io stack[-1]
 
 # Cache

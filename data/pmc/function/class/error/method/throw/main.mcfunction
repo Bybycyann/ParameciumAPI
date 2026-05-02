@@ -1,14 +1,16 @@
 # {"Config": false}
-# error.throw(args: {type: str, function: str, message: str/textComponent, hide: bool})
+# error.throw(args: {type: str, hide: bool, tag: str,function: str, message: str/textComponent})
 # --------------------
 # 抛出异常
 # @Param
 # type: 异常类型
-# [defult] -> error
+# [defult] -> warning
 # *function: 异常函数
 # *message: 异常消息
 # hide: 是否隐藏异常消息
-# [defult] -> false
+# [defult] -> true
+# tag: 异常标签 (⚠️允许的字符包括：-、+、.、_、A-Z、a-z、0-9)
+# [defult] -> None
 # @Update
 # Error stack(error)
 # --------------------
@@ -17,21 +19,13 @@ execute if score #__error__ pmc.var matches ..-1 run return run scoreboard playe
 
 # Input
 data modify storage pmc:io stack append value {}
-$data modify storage pmc:io stack[-1].PARAM set value $(args)
+data modify storage pmc:io stack[-1].PARAM set value {"type": "warning", "hide": true, "tag": "#None"}
+$data modify storage pmc:io stack[-1].PARAM merge value $(args)
 
-# 构建异常消息
-data modify storage pmc:io stack[-1].CONTEXT.args.str set from storage pmc:io stack[-1].PARAM.function
-data modify storage pmc:io stack[-1].CONTEXT.args merge value {old: "#", new: "", num: 1}
-function #pmc:str.replace
-
-data modify storage pmc:io stack[-1].CONTEXT.args set value {}
-data modify storage pmc:io stack[-1].CONTEXT.args.str set from storage pmc:io return
-data modify storage pmc:io stack[-1].CONTEXT.args merge value {sep: ":", num: 1}
-function #pmc:str.split
-
-data modify storage pmc:io stack[-1].error.namespace set from storage pmc:io return[0]
+# 构建异常对象 {type,function,message,namespace,tag}
 data modify storage pmc:io stack[-1].error merge from storage pmc:io stack[-1].PARAM
-execute unless data storage pmc:io stack[-1].PARAM.type run data modify storage pmc:io stack[-1].error.type set value "error"
+# 解析命名空间
+execute if data storage pmc:io stack[-1].PARAM{"hide": false} run function pmc:class/error/method/throw/1.1
 
 # Return
 # 压入异常栈帧

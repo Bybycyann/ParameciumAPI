@@ -57,14 +57,16 @@ data modify storage pmc:io return set from ...
 
 ### 异常
 
-PMC 约定了一套异常抛出与捕获语法
+PMC 约定了一套简单的异常抛出与捕获语法
 
 ```mcfunction
 # 添加一个尝试
 function #pmc:error.try
     # 抛出一个异常
-    function #pmc:error.throw {"args":{"function":"异常函数/函数标签","message":"异常消息文本/文本组件"}}
-# 拦截一个异常
+    function #pmc:error.throw {"args":{"type":"异常类型","hide":(true|false),"tag":"异常标签","function":"异常函数/函数标签","message":"异常消息文本/文本组件"}}
+    # 在一个异常上下文中抓取特殊异常
+    execute if data storage pmc:io error[-1][{"tag":"exampleTag"}] run ...
+# 拦截异常
 execute (if|unless) function #pmc:error.catch run ...
 ```
 
