@@ -110,5 +110,5 @@ data modify storage pmc:io return[-1] set string storage pmc:io return[-1] 0 2
 data modify storage pmc:io stack[-1].CONTEXT.args set value {"sep": ["."]}
 data modify storage pmc:io stack[-1].CONTEXT.args.source set from storage pmc:io return
 function #pmc:str.strcat
-tellraw @s {"translate": "函数平均运行时间：%s ms", "with": [{"type": "nbt", "storage": "pmc:io", "nbt": "return"}]}
+tellraw @s {"translate": "函数运行时间：%s ms", "with": [{"type": "nbt", "storage": "pmc:io", "nbt": "return"}]}
 data remove storage pmc:io stack[-1]

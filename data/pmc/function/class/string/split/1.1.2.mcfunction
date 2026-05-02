@@ -1,12 +1,9 @@
-# 字符串切片
-
-scoreboard players set #__update__ pmc.var 1
-
-$data modify storage pmc:io return append string storage pmc:io stack[-1].PARAM.str $(start) $(index0)
-execute if data storage pmc:io stack[-1].PARAM.mark run data modify storage pmc:io return append from storage pmc:io stack[-1].PARAM.mark
-execute store result score #__start__ pmc.var store result score #__index__ pmc.var run data get storage pmc:io stack[-1].index1
-
-scoreboard players operation #__i__ pmc.var -= #__len-1__ pmc.var
-scoreboard players remove #__num__ pmc.var 1
-execute unless score #__num__ pmc.var matches 0 run return 0
-scoreboard players set #__i__ pmc.var 0
+scoreboard players remove #__splitNum__ pmc.var 1
+scoreboard players operation #__strLen__ pmc.var -= #__sepLen__ pmc.var
+execute store result storage pmc:io stack[-1].ptr0 int 1 run scoreboard players get #__ptr__ pmc.var
+execute store result storage pmc:io stack[-1].ptr int 1 run scoreboard players operation #__ptr__ pmc.var += #__sepLen__ pmc.var
+function pmc:class/string/split/1.1.2.1 with storage pmc:io stack[-1]
+scoreboard players set #__ptr__ pmc.var 0
+data modify storage pmc:io stack[-1].strC set from storage pmc:io stack[-1].PARAM.str
+execute unless data storage pmc:io stack[-1].PARAM{"mark": "#None"} run data modify storage pmc:io stack[-1].RESULT append from storage pmc:io stack[-1].PARAM.mark
+function pmc:class/string/split/1.1

@@ -19,7 +19,7 @@ execute if score #__error__ pmc.var matches ..-1 run return run scoreboard playe
 data modify storage pmc:io stack append value {}
 $data modify storage pmc:io stack[-1].PARAM set value $(args)
 
-# 构建异常对象
+# 构建异常消息
 data modify storage pmc:io stack[-1].CONTEXT.args.str set from storage pmc:io stack[-1].PARAM.function
 data modify storage pmc:io stack[-1].CONTEXT.args merge value {old: "#", new: "", num: 1}
 function #pmc:str.replace

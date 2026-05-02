@@ -1,0 +1,2 @@
+$data modify storage pmc:io stack[-1].RESULT append string storage pmc:io stack[-1].PARAM.str 0 $(ptr0)
+$data modify storage pmc:io stack[-1].PARAM.str set string storage pmc:io stack[-1].PARAM.str $(ptr)

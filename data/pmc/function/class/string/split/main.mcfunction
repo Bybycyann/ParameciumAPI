@@ -20,35 +20,27 @@
 
 # Input
 data modify storage pmc:io stack append value {}
-# $data modify storage pmc:io stack[-1].PARAM merge value $(args)
-data modify storage pmc:io stack[-1].PARAM set from storage pmc:io stack[-2].CONTEXT.args
+data modify storage pmc:io stack[-1].PARAM merge value {"sep": " ","mark": "#None", "num": 2147483647}
+data modify storage pmc:io stack[-1].PARAM merge from storage pmc:io stack[-2].CONTEXT.args
 
-# Errors
+# Error
 function #pmc:error.try
     execute unless data storage pmc:io stack[-1].PARAM.str run \
     function #pmc:error.throw {"args":{"type": "error", "function":"#pmc:str.split", "message":'缺少必要的参数: "str".'}}
 execute if function #pmc:error.catch run return run data remove storage pmc:io stack[-1]
 
-# Cache
-
 # Main
-data modify storage pmc:io return set value []
-execute unless data storage pmc:io stack[-1].PARAM.sep run data modify storage pmc:io stack[-1].PARAM.sep set value ' '
-
-execute store result score #__i__ pmc.var run data get storage pmc:io stack[-1].PARAM.str
-execute store result score #__len-1__ pmc.var store result score #__len__ pmc.var run data get storage pmc:io stack[-1].PARAM.sep
-scoreboard players remove #__len-1__ pmc.var 1
-scoreboard players operation #__i__ pmc.var -= #__len-1__ pmc.var
-
-execute store result score #__num__ pmc.var run data get storage pmc:io stack[-1].PARAM.num
-scoreboard players set #__index__ pmc.var 0
-scoreboard players set #__start__ pmc.var 0
-
-execute store result storage pmc:io stack[-1].start int 1 run scoreboard players get #__start__ pmc.var
-execute store result storage pmc:io stack[-1].index0 int 1 run scoreboard players get #__index__ pmc.var
-execute store result storage pmc:io stack[-1].index1 int 1 run scoreboard players operation #__index__ pmc.var += #__len__ pmc.var
+data modify storage pmc:io stack[-1] merge value {"RESULT": []}
+execute store result score #__strLen__ pmc.var run data get storage pmc:io stack[-1].PARAM.str
+execute store result score #__sepLen__ pmc.var store result storage pmc:io stack[-1].sepLen int 1 run data get storage pmc:io stack[-1].PARAM.sep
+execute store result score #__splitNum__ pmc.var run data get storage pmc:io stack[-1].PARAM.num
+scoreboard players set #__ptr__ pmc.var 0
+data modify storage pmc:io stack[-1].strC set from storage pmc:io stack[-1].PARAM.str
+# 切片函数
 function pmc:class/string/split/1.1
+# 末尾元素
+data modify storage pmc:io stack[-1].RESULT append from storage pmc:io stack[-1].PARAM.str
 
 # Return
-data modify storage pmc:io return set from storage pmc:io stack[-1].hach_sep
+data modify storage pmc:io return set from storage pmc:io stack[-1].RESULT
 data remove storage pmc:io stack[-1]

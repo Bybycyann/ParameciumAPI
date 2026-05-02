@@ -11,6 +11,12 @@ function pmc:__gamerule__
 # 缓存释放
 data remove storage pmc:io cache
 
+# 栈重置
+data modify storage pmc:io stack_tmp set from storage pmc:io stack[0]
+data modify storage pmc:io stack set value []
+data modify storage pmc:io stack append from storage pmc:io stack_tmp
+data remove storage pmc:io stack_tmp
+
 # Scoreboard
     # Variables
     scoreboard objectives add pmc.var dummy [{"text":"PMC ","color":"aqua"},{"text":"Variables","color":"gold"}]
