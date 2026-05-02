@@ -15,8 +15,7 @@
 
 # Input
 data modify storage pmc:io stack append value {}
-# $data modify storage pmc:io stack[-1].PARAM merge value $(args)
-data modify storage pmc:io stack[-1].PARAM set from storage pmc:io stack[-2].CONTEXT.args
+data modify storage pmc:io stack[-1].PARAM merge from storage pmc:io stack[-2].CONTEXT.args
 
 # Errors
 function #pmc:error.try
@@ -27,7 +26,7 @@ execute if function #pmc:error.catch run return run data remove storage pmc:io s
 # Cache
 
 # Main
-execute unless data storage pmc:io stack[-1].PARAM.sep run data modify storage pmc:io stack[-1].PARAM merge value {sep: ['']}
+execute unless data storage pmc:io stack[-1].PARAM.sep[0] run data modify storage pmc:io stack[-1].PARAM merge value {"sep": ['']}
 execute store result score #__i__ pmc.var run data get storage pmc:io stack[-1].PARAM.source
 execute store result score #__len__ pmc.var run data get storage pmc:io stack[-1].PARAM.sep
 function pmc:class/string/strcat/1.1

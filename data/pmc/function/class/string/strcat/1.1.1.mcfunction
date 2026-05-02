@@ -1,3 +1,4 @@
 # 字符串拼接
 
-$data modify storage pmc:io stack[-1].PARAM.source[1] set value "$(str1)$(sep)$(str2)"
+execute if data storage pmc:io stack[-1].g{"sep": ""} run return run function pmc:class/string/strcat/1.1.1.1 with storage pmc:io stack[-1].g
+function pmc:class/string/strcat/1.1.1.2 with storage pmc:io stack[-1].g
