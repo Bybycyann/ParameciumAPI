@@ -37,7 +37,7 @@ execute store result score #__splitNum__ pmc.var run data get storage pmc:io sta
 scoreboard players set #__ptr__ pmc.var 0
 data modify storage pmc:io stack[-1].strC set from storage pmc:io stack[-1].PARAM.str
 # 切片函数
-function pmc:class/string/split/1.1
+function pmc:class/string/method/split/1.1
 # 末尾元素
 data modify storage pmc:io stack[-1].RESULT append from storage pmc:io stack[-1].PARAM.str
 

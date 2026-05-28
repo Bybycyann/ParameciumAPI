@@ -7,7 +7,7 @@
 # else -> 0
 # --------------------
 
-execute if score #__error__ pmc.var matches 0.. store result score #__error_count__ pmc.var store result score #__i__ pmc.var run data get storage pmc:io error[-1]
+execute if score #__error__ pmc.var matches 0.. store result score #__error_count__ pmc.var store result score #__errori__ pmc.var run data get storage pmc:io error[-1]
 
 # 异常拦截
 function pmc:class/error/method/catch/1.1

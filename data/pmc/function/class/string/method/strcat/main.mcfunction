@@ -26,10 +26,10 @@ execute if function #pmc:error.catch run return run data remove storage pmc:io s
 # Cache
 
 # Main
-execute unless data storage pmc:io stack[-1].PARAM.sep[0] run data modify storage pmc:io stack[-1].PARAM merge value {"sep": ['']}
+execute unless data storage pmc:io stack[-1].PARAM.sep[0] run data modify storage pmc:io stack[-1].PARAM merge value {"sep": [""]}
 execute store result score #__i__ pmc.var run data get storage pmc:io stack[-1].PARAM.source
 execute store result score #__len__ pmc.var run data get storage pmc:io stack[-1].PARAM.sep
-function pmc:class/string/strcat/1.1
+function pmc:class/string/method/strcat/1.1
 
 # Return
 data modify storage pmc:io return set from storage pmc:io stack[-1].strcat

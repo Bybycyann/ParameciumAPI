@@ -1,7 +1,7 @@
 # 捕获异常
 
-execute if score #__i__ pmc.var matches ..0 run return 1
-scoreboard players remove #__i__ pmc.var 1
+execute if score #__errori__ pmc.var matches ..0 run return 1
+scoreboard players remove #__errori__ pmc.var 1
 
 # Push
 data modify storage pmc:io stack append value {}

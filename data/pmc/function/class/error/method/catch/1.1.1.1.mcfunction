@@ -1,33 +1,10 @@
-# 打印异常消息
+data modify storage pmc:io stack[-1].CONTEXT.args.str set from storage pmc:io stack[-1].error.function
+data modify storage pmc:io stack[-1].CONTEXT.args merge value {old: "#", new: "", num: 1}
+function #pmc:str.replace
 
-$tellraw @s [\
-    {\
-        "translate":"[%s] ",\
-        "with": [{\
-            "type": "nbt",\
-            "storage": "pmc:io",\
-            "nbt": "stack[-1].error.namespace"\
-        }],\
-        "color": "#FFFFFF"\
-    },\
-    {\
-        "translate":"%s:%s",\
-        "with":[\
-            {\
-                "type": "nbt",\
-                "storage": "pmc:io",\
-                "nbt": "stack[-1].error.type"\
-            },\
-            $(str_tmp)\
-        ],\
-        "color":"red",\
-        "hover_event":{\
-            "action":"show_text",\
-            "value":[{\
-                "type": "nbt",\
-                "storage": "pmc:io",\
-                "nbt": "stack[-1].error.function",\
-                "color": "yellow"\
-            }]\
-        }}\
-    ]
+data modify storage pmc:io stack[-1].CONTEXT.args set value {}
+data modify storage pmc:io stack[-1].CONTEXT.args.str set from storage pmc:io return
+data modify storage pmc:io stack[-1].CONTEXT.args merge value {sep: ":", num: 1}
+function #pmc:str.split
+
+data modify storage pmc:io stack[-1].error.namespace set from storage pmc:io return[0]

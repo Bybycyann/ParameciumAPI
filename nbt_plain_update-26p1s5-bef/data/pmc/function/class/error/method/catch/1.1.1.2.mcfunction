@@ -1,16 +1,12 @@
 # 打印异常消息
 
-# 解析命名空间
-function pmc:class/error/method/catch/1.1.1.1
-# 构建完整输出
-tellraw @s [\
+$tellraw @s [\
     {\
         "translate":"[%s] ",\
         "with": [{\
             "type": "nbt",\
             "storage": "pmc:io",\
-            "nbt": "stack[-1].error.namespace",\
-            "interpret": true\
+            "nbt": "stack[-1].error.namespace"\
         }],\
         "color": "#FFFFFF"\
     },\
@@ -20,15 +16,9 @@ tellraw @s [\
             {\
                 "type": "nbt",\
                 "storage": "pmc:io",\
-                "nbt": "stack[-1].error.type",\
-                "interpret": true\
+                "nbt": "stack[-1].error.type"\
             },\
-            {\
-                "type": "nbt",\
-                "storage": "pmc:io",\
-                "nbt": "stack[-1].error.message",\
-                "interpret": true\
-            }\
+            $(str_tmp)\
         ],\
         "color":"red",\
         "hover_event":{\
@@ -37,7 +27,6 @@ tellraw @s [\
                 "type": "nbt",\
                 "storage": "pmc:io",\
                 "nbt": "stack[-1].error.function",\
-                "interpret": true,\
                 "color": "yellow"\
             }]\
         }}\

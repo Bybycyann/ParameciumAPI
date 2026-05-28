@@ -25,7 +25,7 @@ $data modify storage pmc:io stack[-1].PARAM merge value $(args)
 # 构建异常对象 {type,function,message,namespace,tag}
 data modify storage pmc:io stack[-1].error merge from storage pmc:io stack[-1].PARAM
 # 解析命名空间
-execute if data storage pmc:io stack[-1].PARAM{"hide": false} run function pmc:class/error/method/throw/1.1
+# execute if data storage pmc:io stack[-1].PARAM{"hide": false} run function pmc:class/error/method/throw/1.1
 
 # Return
 # 压入异常栈帧
